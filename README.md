@@ -48,6 +48,8 @@ ARM A9 (Processor) :
 | speclibm  |   3.86567 W   |  
 | spemcf    |   3.86567 W  |  
 | specsjeng |   3.86567 W  |
+
+
 Όλα τα benchmarks έχουν την ίδια κατανάλωση ισχύος κάτι που είναι _**απολύτως λογικό**_, αφού όλα έχουν την ίδια αρχιτεκτονική (default).
 
 Στη συνέχεια τρέχουμε το mcpat για τις διάφορες παραλλαγές αρχιτεκτονικής που κάναμε στο προηγούμενο εργαστήριο.
@@ -112,5 +114,5 @@ ARM A9 (Processor) :
 
 [![N|Solid](https://raw.githubusercontent.com/cmousikos/comp_arch_lab_3/main/results_specbzip/peak_power_specbzip.jpg)](https://raw.githubusercontent.com/cmousikos/comp_arch_lab_3/main/results_specbzip/peak_power_specbzip.jpg)
 
-
+Το μικρότερο γινόμενο peak power * χρόνος εκτέλεσης είναι και το πιο χρονικά & ενεργειακά συμφέρον.
 
