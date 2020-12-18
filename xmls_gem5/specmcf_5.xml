@@ -26,9 +26,9 @@
 		<param name="virtual_address_width" value="64" />
 		<param name="physical_address_width" value="48" />
 		<param name="virtual_memory_page_size" value="4096" />
-		<stat name="total_cycles" value="172860900" />
-		<stat name="idle_cycles" value="40174137" />
-		<stat name="busy_cycles" value="132686763" />
+		<stat name="total_cycles" value="113765912" />
+		<stat name="idle_cycles" value="2864367" />
+		<stat name="busy_cycles" value="110901545" />
 			<!--This page size(B) is complete different from the page size in Main memo section. this page size is the size of 
 			virtual memory from OS/Archi perspective; the page size in Main memo section is the actual physical line in a DRAM bank  -->
 		<!-- *********************** cores ******************* -->
@@ -114,22 +114,22 @@
 			<param name="RAS_size" value="32" />						
 			<!-- general stats, defines simulation periods;require total, idle, and busy cycles for sanity check  -->
 			<!-- please note: if target architecture is X86, then all the instructions refer to (fused) micro-ops -->
-			<stat name="total_instructions" value="100196363" />
-			<stat name="int_instructions" value="46546871" />
-			<stat name="fp_instructions" value="18" />
+			<stat name="total_instructions" value="109431867" />
+			<stat name="int_instructions" value="73523220" />
+			<stat name="fp_instructions" value="166465" />
 			<stat name="branch_instructions" value="stats.system.cpu.branchPredindirectMispredicted + stats.system.cpu.branchPred.condPredicted + stats.system.cpu.branchPred.condIncorrect" />
 			<stat name="branch_mispredictions" value="stats.system.cpu.branchPredindirectMispredicted + stats.system.cpu.branchPred.condIncorrect" />
 			<stat name="load_instructions" value="stats.system.cpu.fetch2.load_instructions" />
 			<stat name="store_instructions" value="stats.system.cpu.fetch2.store_instructions" />
-			<stat name="committed_instructions" value="100196363" />
-			<stat name="committed_int_instructions" value="46546871" />
-			<stat name="committed_fp_instructions" value="18" />
-			<stat name="pipeline_duty_cycle" value="0.5785" /><!--<=1, runtime_ipc/peak_ipc; averaged for all cores if homogeneous -->
+			<stat name="committed_instructions" value="109431867" />
+			<stat name="committed_int_instructions" value="73523220" />
+			<stat name="committed_fp_instructions" value="166465" />
+			<stat name="pipeline_duty_cycle" value="0.878998" /><!--<=1, runtime_ipc/peak_ipc; averaged for all cores if homogeneous -->
 			<!-- the following cycle stats are used for heterogeneous cores only, 
 				please ignore them if homogeneous cores -->
-			<stat name="total_cycles" value="172860900" />
-		    <stat name="idle_cycles" value="40174137" />
-		    <stat name="busy_cycles" value="132686763" />
+			<stat name="total_cycles" value="113765912" />
+		    <stat name="idle_cycles" value="2864367" />
+		    <stat name="busy_cycles" value="110901545" />
 			<!-- instruction buffer stats -->
 			<!-- ROB stats, both RS and Phy based OoOs have ROB
 			performance simulator should capture the difference on accesses,
@@ -138,9 +138,9 @@
 			<!-- Number of Windows switches (number of function calls and returns)-->
 			<!-- Alu stats by default, the processor has one FPU that includes the divider and 
 			 multiplier. The fpu accesses should include accesses to multiplier and divider  -->
-			<stat name="ialu_accesses" value="46526151" />			
-			<stat name="fpu_accesses" value="18" />
-			<stat name="mul_accesses" value="20720" />
+			<stat name="ialu_accesses" value="72954855" />			
+			<stat name="fpu_accesses" value="166465" />
+			<stat name="mul_accesses" value="568365" />
 			<stat name="cdb_alu_accesses" value="0" />
 			<stat name="cdb_mul_accesses" value="0" />
 			<stat name="cdb_fpu_accesses" value="0" />
@@ -194,13 +194,13 @@
 			<component id="system.core0.icache" name="icache">
 				<!-- there is no write requests to itlb although writes happen to it after miss, 
 				which is actually a replacement -->
-				<param name="icache_config" value="65536,64,64,1,1,2,8,1" />
+				<param name="icache_config" value="131072,64,8,1,1,2,8,1" />
 				<!-- the parameters are capacity,block_width, associativity, bank, throughput w.r.t. core clock, latency w.r.t. core clock,output_width, cache policy -->
 				<!-- cache_policy;//0 no write or write-though with non-write allocate;1 write-back with write-allocate -->
 				<param name="buffer_sizes" value="4,4,4,4" />
 				<!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size--> 
 				<stat name="read_accesses" value="stat.system.cpu.icache.overall_accesses::total" />
-				<stat name="read_misses" value="674" />
+				<stat name="read_misses" value="518" />
 				<stat name="conflicts" value="0" />				
 			</component>
 			<component id="system.core0.dtlb" name="dtlb">
@@ -211,13 +211,13 @@
 			</component>
 			<component id="system.core0.dcache" name="dcache">
 			        <!-- all the buffer related are optional -->
-				<param name="dcache_config" value="65536,64,64,1,1,2,8,1" />
+				<param name="dcache_config" value="131072,64,8,1,1,2,8,1" />
 				<param name="buffer_sizes" value="4,4,4,4" />
 				<!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->	
-				<stat name="read_accesses" value="41123540" />
-				<stat name="write_accesses" value="10949261" />
-				<stat name="read_misses" value="283520" />
-				<stat name="write_misses" value="320010" />
+				<stat name="read_accesses" value="21482693" />
+				<stat name="write_accesses" value="14254627" />
+				<stat name="read_misses" value="11370" />
+				<stat name="write_misses" value="55333" />
 				<stat name="conflicts" value="0" />	
 			</component>
 			<component id="system.core0.BTB" name="BTB">
@@ -230,7 +230,7 @@
 		
 		<component id="system.L20" name="L20">
 			<!-- all the buffer related are optional -->
-				<param name="L2_config" value="524288,64,64,1,4,20,8,1" />
+				<param name="L2_config" value="2097152,64,16,1,4,20,8,1" />
 			    <!-- consider 4-way bank interleaving for Niagara 1 -->
 				<!-- the parameters are capacity,block_width, associativity, bank, throughput w.r.t. core clock, latency w.r.t. core clock,output_width, cache policy -->
 				<param name="buffer_sizes" value="20,16,16,16" />
@@ -240,10 +240,10 @@
 				<!-- number of r, w, and rw ports -->
 				<param name="device_type" value="1" />
 				<param name="vdd" value="0" /><!-- 0 means using ITRS default vdd -->
-				<stat name="read_accesses" value="553539" />
+				<stat name="read_accesses" value="49848" />
 				<stat name="write_accesses" value="stats.system.l2.WritebackDirty_accesses::total + stats.system.l2.WritebackClean_accesses::total" />
-				<stat name="read_misses" value="274765" />
-				<stat name="write_misses" value="458231" />
+				<stat name="read_misses" value="39881" />
+				<stat name="write_misses" value="46443" />
 				<stat name="conflicts" value="0" />	
 			    <stat name="duty_cycle" value="0.2" />	
 		</component>
