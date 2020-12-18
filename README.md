@@ -71,7 +71,7 @@ ARM A9 (Processor) :
 | 1 |   3.86567 W  | 
 | 2 |   3.78201 W   | 
 | 3 |  3.78201 W   | 
-| 4 |  13.6204 W| 
+| 4 |  13.6204 W | 
 | 5 |  2.17736 W  |
 | 6 |   3.8992 W  |
 | 7 |   5.05549 W  |
@@ -114,5 +114,65 @@ ARM A9 (Processor) :
 
 [![N|Solid](https://raw.githubusercontent.com/cmousikos/comp_arch_lab_3/main/results_specbzip/peak_power_specbzip.jpg)](https://raw.githubusercontent.com/cmousikos/comp_arch_lab_3/main/results_specbzip/peak_power_specbzip.jpg)
 
-Το μικρότερο γινόμενο peak power * χρόνος εκτέλεσης είναι και το πιο χρονικά & ενεργειακά συμφέρον.
+Το μικρότερο γινόμενο **(peak power)x(χρόνος εκτέλεσης)** είναι και το πιο χρονικά & ενεργειακά συμφέρον.
+
+Στο προηγούμενο εργαστήριο με βάση τα συμπεράσματα που είχαν προκύψει είχαμε βελτιστοποιήσει όσο γινόταν το benchmark **specmcf**, κάνοντας τις εξής παραμετροποιήσεις : 
+
+* **1 ->  default**
+* **2 -> --l1d_size=32kB --l1i_size=64kB --l2_size=512kB --l1i_assoc=4 --l1d_assoc=4 --l2_assoc=8**
+* **3 -> --l1d_size=128kB --l1i_size=128kB --l2_size=2MB --l1i_assoc=8 --l1d_assoc=8 --l2_assoc=16**
+* **4 -> --l1d_size=32kB --l1i_size=32kB --l2_size=512kB --l1i_assoc=2 --l1d_assoc=2 --l2_assoc=4**
+* **Τα 5,6,7 είναι τα ίδια με τα 2,3,4 αντίστοιχα με τη μόνη διαφορά το --cpu-clock=1GHz**
+
+Από τα [αρχεία](https://github.com/cmousikos/comp_arch_lab_3/tree/main/results_specmcf) προκύπτουν τα εξής αποτελέσματα όσο αναφορά την συνολική κατανάλωση ισχύος για τον processor.
+
+| Α/α      | Κατανάλωση ισχύος |
+|-----------|------|
+| 1 |   3.86567 W  | 
+| 2 |   3.91854 W   | 
+| 3 |  5.49615 W   | 
+| 4 |  2.80767 W | 
+| 5 |  3.91854 W  |
+| 6 |  5.49615 W  |
+| 7 |   2.80767 W |
+
+Για τα cores προκύπτει : 
+
+| Α/A |  Area | Runtime Dynamic | Subthreshold Leakage | Gate Leakage |
+|-----------|------|-------|-------|------|
+| 1 |   7.22483 mm^2 | 0.292178 W | 1.098 W | 0.00726281 W |
+| 2 |   6.79209 mm^2  |  0.269356 W | 0.904051 W | 0.00536875 W |
+| 3 |   10.408 mm^2  | 0.523131 W | 1.17252 W| 0.00681165 W |
+| 4 |  4.59384 mm^2 | 0.107997 W | 0.696764 W | 0.0036123 W |
+| 5 |  6.79209 mm^2 | 0.274252 W | 0.904051 W | 0.00536875 W |
+| 6 |   10.408 mm^2 | 0.531019 W | 1.17252 W | 0.00681165 W |
+| 7 |   4.59384 mm^2| 0.109847 W | 0.696764 W | 0.0036123 W |
+
+
+Για την L2 (total):
+
+| Α/A |  Area | Runtime Dynamic | Subthreshold Leakage | Gate Leakage |
+|-----------|------|-------|-------|------|
+| 1 |   7.0038 mm^2 |  0.0158679 W | 0.00472789 W | 0.000571604 W |
+| 2 |   2.12555 mm^2   | 0.00093215 W | 0.00148306 W| 0.000201415 W |
+| 3 | 7.67752 mm^2  | 0.000688588 W | 0.00494005 W| 0.000605182 W |
+| 4 | 2.08751 mm^2 | 0.00649737 W | 0.00143628 W| 0.000194587 W |
+| 5 |  2.12555 mm^2 | 0.000949094 W | 0.00148306 W | 0.000201415 W |
+| 6 |  7.67752 mm^2 | 0.000698971 W | 0.00494005 W |  0.000605182 W |
+| 7 |   2.08751 mm^2  | 0.0066087 W | 0.00143628 W | 0.000194587 W |
+
+Από τα παραπάνω προκύπτει ότι η συχνότητα δεν παίζει κάποιο ρόλο στην κατανάλωση ισχύος και στο area. Επίσης προκύπτει ότι στην περίπτωση **4** έχουμε χαμηλότερη κατανάλωση ισχύος, που ίσως να οφείλεται στο σχετικά χαμηλό associativity και μέγεθος των caches.
+
+Το παρακάτω γράφημα από το προηγούμενο εργαστήριο μας δείχνει τους χρόνους εκτέλεσης του benchmark με τις αλλαγές στις παραμέτρους.
+
+[![N|Solid](https://raw.githubusercontent.com/cmousikos/comp_arch_lab2/main/Mcf_parameters/sim_seconds.jpg)](https://raw.githubusercontent.com/cmousikos/comp_arch_lab2/main/Mcf_parameters/sim_seconds.jpg)
+
+Και παρακάτω προκύπτει το γράφημα για τον επεξεργαστή και το πως επηρεάζουν οι διάφορες αλλαγές στις παραμέτρους στο peak power: 
+
+[![N|Solid](https://raw.githubusercontent.com/cmousikos/comp_arch_lab_3/main/results_specmcf/peak_power_specmcf.jpg)](https://raw.githubusercontent.com/cmousikos/comp_arch_lab_3/main/results_specmcf/peak_power_specmcf.jpg)
+
+Από τα γραφήματα εύκολα φαίνεται ότι η περίπτωση **4** αποτελεί τον καλύτερο συνδυασμό κατανάλωσης ισχύος - ταχύτητας εκτέλεσης.
+
+
+
 
