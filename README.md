@@ -171,7 +171,7 @@ ARM A9 (Processor) :
 
 [![N|Solid](https://raw.githubusercontent.com/cmousikos/comp_arch_lab_3/main/results_specmcf/peak_power_specmcf.jpg)](https://raw.githubusercontent.com/cmousikos/comp_arch_lab_3/main/results_specmcf/peak_power_specmcf.jpg)
 
-Από τα γραφήματα εύκολα φαίνεται ότι η περίπτωση **4** αποτελεί τον καλύτερο συνδυασμό κατανάλωσης ισχύος - ταχύτητας εκτέλεσης.
+Από τα γραφήματα εύκολα φαίνεται ότι η περίπτωση **4** αποτελεί τον καλύτερο συνδυασμό κατανάλωσης ισχύος - ταχύτητας εκτέλεσης .
 
 
 
