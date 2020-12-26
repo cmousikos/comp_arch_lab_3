@@ -362,7 +362,7 @@ ARM A9 (Processor) :
 
 Τα αποτελέσματα της προσομοίωσης μπορούν να έχουν αρκετά σημαντικό error, και οι προβλεπόμενες τιμές να απέχουν από τις πραγματικές και αυτό μπορεί να οφείλεται στο ότι μερικά μοντέλα επεξεργαστών είναι είτε σε μη ολοκληρωμένο στάδιο, είτε είναι πολύ υψηλού επιπέδου, είτε διότι η προσοσωμοίωση μπορεί να έχει διαφορές από την κατασκευή στο χέρι. Επιπλέον αρκετά μεγάλα σφάλματα μπορούν να παρατηρηθούν στο dynamic power λόγω θορύβου της τάσης είτε λόγω θερμικών απωλειών. Αντίστοιχη βιβλιογραφία υπάρχει εδώ :
 
-[S. L. Xi, H. Jacobson, P. Bose, G. Wei and D. Brooks, "Quantifying sources of error in McPAT and potential impacts on architectural studies," 2015 IEEE 21st International Symposium on High Performance Computer Architecture (HPCA), Burlingame, CA, 2015, pp. 577-589, doi: 10.1109/HPCA.2015.7056064.](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7056064&isnumber=7056013).
+[S. L. Xi, H. Jacobson, P. Bose, G. Wei and D. Brooks, "Quantifying sources of error in McPAT and potential impacts on architectural studies," 2015 IEEE 21st International Symposium on High Performance Computer Architecture (HPCA), Burlingame, CA, 2015, pp. 577-589, doi: 10.1109/HPCA.2015.7056064.](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7056064&isnumber=7056013)  .
 
 
 
